@@ -60,7 +60,7 @@ export function CareerPath() {
                     <div key={step.id} className="relative pl-8">
                         {/* Timeline Dot */}
                         <div className={cn(
-                            "absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border-4 border-background shadow-sm",
+                            "absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border-4 border-background shadow-sm z-10",
                             step.status === 'current' ? "bg-primary text-primary-foreground" :
                                 step.status === 'completed' ? "bg-green-500 text-white" : "bg-muted text-muted-foreground"
                         )}>

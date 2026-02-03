@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VoiceAgent from "@/components/VoiceAgent";
@@ -16,34 +17,8 @@ export default function LandingPage() {
     return (
         <div className="min-h-screen bg-white dark:bg-slate-950 flex flex-col font-sans">
             {/* Navbar */}
-            <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur-sm dark:bg-slate-950/80">
-                <div className="container mx-auto flex h-16 items-center justify-between px-6">
-                    <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                            <Activity className="inline-block h-6 w-6 mr-2 text-orange-600" />
-                            GigLens
-                        </span>
-                    </div>
-
-                    <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-                        <Link href="#features" className="hover:text-orange-600 transition-colors">Features</Link>
-                        <Link href="#how-it-works" className="hover:text-orange-600 transition-colors">How it Works</Link>
-                    </nav>
-
-                    <div className="flex items-center gap-4">
-                        {/* Simple Language Toggle */}
-                        <Button variant="outline" size="sm" onClick={toggleLanguage} className="bg-orange-50 text-orange-700 border-orange-200">
-                            {language === 'en' ? 'हिंदी | EN' : 'English | HI'}
-                        </Button>
-
-                        <Link href="/dashboard">
-                            <Button className="bg-orange-600 hover:bg-orange-700 text-white">
-                                Get Started
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </header>
+            {/* Navbar */}
+            <Navbar />
 
             {/* Hero Section */}
             <main className="flex-1">
