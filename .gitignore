@@ -1,0 +1,33 @@
+# Netlify / Vercel
+.netlify
+.vercel
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+venv/
+env/
+.env
+.env.local
+__pycache__/
+*.pyc
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+
+# Misc
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Backend Specific
+backend/random_forest_model1.pkl # LARGE FILE - Do not commit ML models directly
+backend/random_forest.pkl
+*.pkl
