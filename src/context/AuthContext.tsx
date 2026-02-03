@@ -149,6 +149,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             updateUserProfile({
                 name: user?.name || 'User',
                 currentBalance: Math.round(data.annualIncome / 12) - data.monthlyExpenses,
+                annualIncome: data.annualIncome,
+                monthlyExpenses: data.monthlyExpenses,
                 goals: [{
                     id: 'init-1',
                     title: 'Emergency Fund',
