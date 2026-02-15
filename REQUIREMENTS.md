@@ -67,3 +67,6 @@ GigLens is a financial health and support platform tailored for gig economy work
 - **Frontend/API**: Vercel (recommended) or similar Node.js host.
 - **ML Service**: Containerized hosting (e.g., Railway, Render, Docker).
 - **Database**: Managed PostgreSQL.
+
+## 6. Future Roadmap
+The system is designed to be cloud-agnostic. While currently deployed on agile platforms, the architecture creates a foundation for future adoption of **AWS** (Amazon Web Services) for scalable compute and storage needs.

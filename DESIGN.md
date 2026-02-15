@@ -6,7 +6,7 @@ GigLens uses a modern, hybrid architecture combining a robust Next.js frontend w
 
 ```mermaid
 graph TD
-    Client["Client (Next.js PWA)"] -->|HTTP/JSON| API["Next.js API Routes"]
+    Client["Client (Next.js App)"] -->|HTTP/JSON| API["Next.js API Routes"]
     Client -->|Auth| Clerk["Clerk Auth"]
     API -->|ORM| DB[("PostgreSQL + Prisma")]
     API -->|Voice| Groq["Groq LLaMA 3.3"]
@@ -83,3 +83,6 @@ The core data models revolve around user profiles and financial snapshots.
 - **LLM**: Groq (LLaMA 3.3 70B)
 - **Voice**: Twilio, Web Speech API
 - **ML Libs**: Scikit-learn, Pandas, NumPy
+
+## 6. Future Scalability
+While the current infrastructure is optimized for agility, future phases include migration to **AWS** services (e.g., Lambda, S3, RDS) to handle enterprise-scale loads and enhanced data storage requirements.
