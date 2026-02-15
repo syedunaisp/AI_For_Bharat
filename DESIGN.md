@@ -6,13 +6,13 @@ GigLens uses a modern, hybrid architecture combining a robust Next.js frontend w
 
 ```mermaid
 graph TD
-    Client[Client (Next.js PWA)] -->|HTTP/JSON| API[Next.js API Routes]
-    Client -->|Auth| Clerk[Clerk Auth]
-    API -->|ORM| DB[(PostgreSQL + Prisma)]
-    API -->|Voice| Groq[Groq LLaMA 3.3]
-    API -->|Telephony| Twilio[Twilio Voice]
-    API -->|Predictions| ML[Python FastAPI Service]
-    ML -->|Inference| Models[Scikit-Learn Models]
+    Client["Client (Next.js PWA)"] -->|HTTP/JSON| API["Next.js API Routes"]
+    Client -->|Auth| Clerk["Clerk Auth"]
+    API -->|ORM| DB[("PostgreSQL + Prisma")]
+    API -->|Voice| Groq["Groq LLaMA 3.3"]
+    API -->|Telephony| Twilio["Twilio Voice"]
+    API -->|Predictions| ML["Python FastAPI Service"]
+    ML -->|Inference| Models["Scikit-Learn Models"]
 ```
 
 ## 2. System Architecture
