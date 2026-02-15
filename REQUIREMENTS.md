@@ -1,179 +1,69 @@
 # GigLens - Requirements Document
 
-## Project Overview
-GigLens is a Progressive Web Application (PWA) designed to provide financial support and health scoring for gig economy workers. The platform offers smart financial forecasting, credit scoring, and goal planning specifically tailored for freelancers and gig workers.
+## 1. Project Overview
+GigLens is a financial health and support platform tailored for gig economy workers. It provides real-time financial tracking, AI-driven insights, credit scoring, and safety nets like government scheme access and emergency funding.
 
-## Functional Requirements
+## 2. Functional Requirements
 
-### 1. User Authentication & Onboarding
-- **User Registration**: Email-based signup with profile creation
-- **Authentication**: Secure login/logout functionality using NextAuth
-- **Onboarding Flow**: Multi-step process to collect user financial data
-- **Profile Management**: Users can update personal and financial information
+### 2.1 User Authentication
+- **Provider**: Clerk (Managed Authentication)
+- **Features**: 
+  - Secure Sign-up/Login (Email, Socials)
+  - User Profile Management via Clerk
+  - Protected Route Middleware
 
-### 2. Financial Health Scoring
-- **GigLens Credit Score**: Custom scoring algorithm for gig workers
-- **Real-time Calculations**: Dynamic score updates based on user data
-- **Score Visualization**: Interactive charts and progress indicators
-- **Historical Tracking**: Score trends over time
+### 2.2 Dashboard Modules
+- **Main Dashboard**: Real-time overview of earnings, expenses, and credit score.
+- **Transactions**: Detailed income and expense logging with categorization.
+- **FlowForward**: Cash flow analysis and forecasting tools.
+- **Goals**: Financial goal setting (e.g., buying a bike, emergency fund) with progress tracking.
+- **Gig Tabby**: Buy Now Pay Later (BNPL) feature for operational expenses (e.g., vehicle repairs).
+- **Government Schemes**: Integrated checker for schemes like Ayushman Bharat and e-Shram.
+- **Jobs**: Curated listing of gig work opportunities.
+- **Stress Simulator**: Financial resilience testing under various scenarios.
 
-### 3. Financial Data Management
-- **Income Tracking**: Multiple income source management
-- **Expense Categorization**: Automated and manual expense tracking
-- **CSV Import**: Bulk data import from bank statements
-- **Transaction Management**: Add, edit, delete financial transactions
+### 2.3 Voice Assistant
+- **Web Assistant**: 
+  - Powered by **Groq (LLaMA 3.3)** for fast, data-grounded responses.
+  - Supports multiple languages (English, Hindi, Telugu).
+  - accessible via floating-action button or landing page.
+- **Phone Assistant**:
+  - **Twilio Integration** for voice-based interaction over phone calls.
+  - Provides financial summaries via voice.
 
-### 4. Predictive Analytics & ML
-- **Approval Probability**: Loan approval likelihood predictions
-- **Income Forecasting**: Future earnings predictions
-- **Risk Assessment**: Financial stability analysis
-- **Stress Testing**: Financial scenario simulations
+### 2.4 ML & Analytics
+- **Predictive Engine**: 
+  - Python (FastAPI) backend for calculating credit scores and risk probabilities.
+  - Uses `scikit-learn` models for predictions.
+- **Leak Detection**: Identifies unnecessary spending patterns.
 
-### 5. Goal Planning & Management
-- **Financial Goals**: Set and track savings/income targets
-- **Progress Monitoring**: Visual progress tracking
-- **Goal Recommendations**: AI-powered goal suggestions
-- **Achievement Rewards**: Gamification elements
+## 3. Technical Requirements
 
-### 6. Job & Career Management
-- **Job Opportunities**: Curated gig job listings
-- **Career Path Planning**: Professional development guidance
-- **Skill Assessment**: Competency evaluation tools
-- **Platform Integration**: Multi-platform gig work tracking
+### 3.1 Frontend Stack
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4, Radix UI (Shadcn), Lucide React
+- **State Management**: Zustand, React Context
+- **Charts**: Recharts, Chart.js
 
-### 7. Advanced Features
-- **LeakShield**: Financial leak detection and prevention
-- **FlowForward**: Cash flow optimization tools
-- **Stress Simulator**: Financial stress testing scenarios
-- **Voice Assistant**: Voice-powered financial queries
+### 3.2 Backend Stack
+- **Primary Backend**: Next.js API Routes (Serverless)
+- **ML Service**: Python 3.x with FastAPI
+- **Database**: PostgreSQL with Prisma ORM
 
-### 8. PWA Capabilities
-- **Offline Functionality**: Core features work without internet
-- **Installable**: Can be installed on mobile/desktop devices
-- **Push Notifications**: Financial alerts and reminders
-- **Responsive Design**: Optimized for all device sizes
+### 3.3 AI & Voice Stack
+- **LLM Provider**: Groq (LLaMA 3.3 70B Versatile)
+- **Voice Input/Output**: Web Speech API (Browser native)
+- **Telephony**: Twilio Voice API
 
-## Technical Requirements
+## 4. Data Requirements
+- **User Data**: Synced between Clerk and local Database via Webhooks.
+- **Financial Data**:
+  - Transactions (Amount, Category, Date)
+  - Snapshots (Monthly revenue, expenses)
+- **Encryption**: All sensitive financial data encrypted at rest and in transit.
 
-### Frontend Stack
-- **Framework**: Next.js 16+ with App Router
-- **Language**: TypeScript for type safety
-- **Styling**: Tailwind CSS with custom components
-- **UI Components**: Radix UI primitives
-- **Charts**: Chart.js and Recharts for data visualization
-- **State Management**: Zustand for global state
-- **PWA**: Native Next.js PWA support with service workers
-
-### Backend Integration
-- **API Client**: Axios for HTTP requests
-- **Authentication**: NextAuth with Prisma adapter
-- **Database ORM**: Prisma for database operations
-- **File Processing**: PapaParse for CSV handling
-- **Date Handling**: date-fns for date operations
-
-### Performance Requirements
-- **Load Time**: Initial page load < 3 seconds
-- **Offline Support**: Core features available offline
-- **Mobile Performance**: 60fps animations on mobile
-- **Bundle Size**: Optimized code splitting and lazy loading
-
-### Security Requirements
-- **Data Encryption**: All sensitive data encrypted in transit
-- **Authentication**: Secure session management
-- **Input Validation**: All user inputs validated and sanitized
-- **HTTPS**: All communications over secure connections
-- **CSP**: Content Security Policy implementation
-
-### Browser Support
-- **Modern Browsers**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
-- **Mobile Browsers**: iOS Safari 14+, Chrome Mobile 90+
-- **PWA Support**: All browsers supporting service workers
-
-### Accessibility Requirements
-- **WCAG 2.1**: Level AA compliance
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Screen Readers**: Compatible with assistive technologies
-- **Color Contrast**: Minimum 4.5:1 contrast ratio
-- **Focus Management**: Clear focus indicators
-
-## Data Requirements
-
-### User Data
-- Personal information (name, email, phone)
-- Financial data (income, expenses, debts, savings)
-- Employment information (platforms, work hours, job types)
-- Goals and preferences
-
-### Financial Metrics
-- Credit scores and approval probabilities
-- Income predictions and forecasts
-- Expense categorizations and trends
-- Risk assessments and recommendations
-
-### System Data
-- User sessions and authentication tokens
-- Application logs and error tracking
-- Performance metrics and analytics
-- Feature usage statistics
-
-## Integration Requirements
-
-### External APIs
-- **ML Backend**: Python-based prediction service
-- **Financial Data**: Bank/platform API integrations (future)
-- **Job Platforms**: Gig economy platform APIs (future)
-- **Notification Services**: Push notification providers (future)
-
-### Database Requirements
-- **Relational Database**: PostgreSQL or MySQL support via Prisma
-- **Data Persistence**: User data, transactions, goals, scores
-- **Backup & Recovery**: Regular automated backups
-- **Scalability**: Support for growing user base
-
-## Deployment Requirements
-
-### Environment Support
-- **Development**: Local development with hot reload
-- **Staging**: Pre-production testing environment
-- **Production**: Scalable production deployment
-- **CI/CD**: Automated testing and deployment pipeline
-
-### Infrastructure
-- **Hosting**: Static hosting with serverless functions
-- **CDN**: Global content delivery network
-- **SSL**: HTTPS certificates and security headers
-- **Monitoring**: Application performance monitoring
-
-## Compliance & Legal
-
-### Data Privacy
-- **GDPR Compliance**: European data protection regulations
-- **CCPA Compliance**: California privacy regulations
-- **Data Retention**: Clear data retention policies
-- **User Consent**: Explicit consent for data collection
-
-### Financial Regulations
-- **Disclaimer**: Clear financial advice disclaimers
-- **Data Security**: Financial data protection standards
-- **Audit Trail**: Transaction and score calculation logs
-- **Transparency**: Clear scoring methodology disclosure
-
-## Success Metrics
-
-### User Engagement
-- **Daily Active Users**: Target 70% retention rate
-- **Session Duration**: Average 5+ minutes per session
-- **Feature Adoption**: 80% of users use core features
-- **Goal Completion**: 60% of set goals achieved
-
-### Technical Performance
-- **Uptime**: 99.9% application availability
-- **Performance**: Core Web Vitals in green
-- **Error Rate**: <1% error rate across all features
-- **Load Times**: 95th percentile < 3 seconds
-
-### Business Impact
-- **User Satisfaction**: 4.5+ star rating
-- **Financial Improvement**: Measurable user financial health gains
-- **Platform Growth**: Month-over-month user growth
-- **Feature Utilization**: High engagement across all modules
+## 5. Deployment Requirements
+- **Frontend/API**: Vercel (recommended) or similar Node.js host.
+- **ML Service**: Containerized hosting (e.g., Railway, Render, Docker).
+- **Database**: Managed PostgreSQL.
